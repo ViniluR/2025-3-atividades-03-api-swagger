@@ -1,6 +1,10 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+
+
+
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -17,6 +21,15 @@ async function bootstrap() {
     whitelist: true,
     forbidNonWhitelisted: true,
   }));
+
+  const swaggerConfig = new DocumentBuilder()
+    .setTitle('API de Tarefas (TODO List)')
+    .setDescription('API para gerenciamento de tarefas da turma Infoweb 2025')
+    .setVersion('1.0')
+    .addTag('tasks')
+    .build();
+  const swaggerDocument = SwaggerModule.createDocument(app, swaggerConfig);
+  SwaggerModule.setup('api-docs', app, swaggerDocument);
 
   const port = process.env.PORT || 3000;
   await app.listen(port);
