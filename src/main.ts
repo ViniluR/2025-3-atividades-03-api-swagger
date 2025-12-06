@@ -24,7 +24,7 @@ async function bootstrap() {
 
   const swaggerConfig = new DocumentBuilder()
     .setTitle('API de Tarefas (TODO List)')
-    .setDescription('API para gerenciamento de tarefas da turma Infoweb 2025')
+    .setDescription('API para gerenciamento de tarefas da turma Infoweb 2025 pra minoraaa')
     .setVersion('1.0')
     .addTag('tasks')
     .build();
